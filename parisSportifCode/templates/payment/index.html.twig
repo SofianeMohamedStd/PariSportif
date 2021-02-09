@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Launch a new user{% endblock %}
+
+{% block body %}
+    <section class="central">
+        <div class="container-fluid p-0">
+            <div class="row mt-4">
+                <div class="col-sm-12 mt-4 bet-board card p-2">
+                    <h4>Confirm Result For Payment</h4>
+                    <table class="table table-hover fw-bold">
+                        <thead>
+                        <tr>
+                            <th class="text-center" scope="col">id Bet</th>
+                            <th class="text-center" scope="col">lastname User</th>
+                            <th class="text-center" scope="col">firstname User</th>
+                            <th class="text-center" scope="col">Result</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for UserWinner in UsersWinner %}
+                            <tr>
+                                <td class="text-center" colspan="col">
+                                    <p>{{ UserWinner.id }}</p>
+                                </td>
+                                <td class="text-center" colspan="col">
+                                    <p>{{ UserWinner.user.lastname }}</p>
+                                </td>
+                                <td class="text-center" colspan="col">
+                                    <p>{{ UserWinner.user.firstname }}</p>
+                                </td>
+                                {% if UserWinner.bet.resultBet != null  %}
+                                    <td class="text-center" colspan="col">
+                                        <p>win</p>
+                                    </td>
+                                {% else %}
+                                    <td class="text-center" colspan="col">
+                                        <p>lose</p>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <a type="button" class="btn btn-danger btn-sm" href="/admin/payment/user">payment User</a>
+
+{% endblock %}

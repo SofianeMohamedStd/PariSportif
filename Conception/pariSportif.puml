@@ -1,0 +1,105 @@
+@startuml
+
+class Utilisateur {
+    - Id integer
+    - Nom string
+    - Prenom stringe
+    - Date de naissance date
+    - Adress string
+    - Pays string
+    - Ville string
+    - Telephone number
+    - Email string
+    - Mot_de_passe integer
+    - Solde float
+
+    + Inscription()
+    + Connexion()
+    + EnvoiDucument()
+}
+class StatutUtilisateur {
+    - id integer
+    - IdStatut StatutUtilisateur
+    - Document_Officelle Bloob
+    - Statut <0,1>
+
+    ValidationDocument()
+}
+
+class Wallet {
+    - id integer
+    - int credit
+
+}
+
+class BetUser {
+    - Id
+    - IdPronostic
+    - IdUtilisateur
+    - amountBetDate date
+    - amountBet float
+    - gainPossible
+
+}
+
+
+class Bet {
+    - id integer
+    - nameBet string
+    - Cote integer
+    - createDate Date
+    - resultBet
+}
+
+class EvenementSport {
+    - id integer
+    - name string
+    - beginDate date
+    - Lieu string
+    - eventPlace integer
+}
+
+class competition {
+    - id integer
+    - name string
+    - Start_At date
+    - End_At date
+}
+
+class Sport {
+    - id integer
+    - name string
+    - nbTeam integer
+    - nbPlayeer integer
+}
+
+class Equipe {
+    - id integer
+    - name string
+
+}
+class Joueurs {
+    - id integer
+    - name string
+    - lastname string
+    - Statut string
+
+}
+
+
+
+
+Utilisateur "1" *-- "1" Wallet
+Utilisateur "1" *-- "1" StatutUtilisateur
+Bet "1" *-- "1..*" BetUser
+Utilisateur "1" *-- "1..*" BetUser
+Bet *-- competition
+competition *-- EvenementSport
+EvenementSport *-- Sport
+Sport *-- Equipe
+Equipe *-- Joueurs
+Joueurs *-- EvenementSport
+
+
+
+@enduml

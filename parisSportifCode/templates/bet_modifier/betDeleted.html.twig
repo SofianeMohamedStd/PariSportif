@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer le pari ?{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Pari Supprimé</h1>
+
+    </br>
+    <a>Votre pari a bien été annulé ; vous avez été remboursé de votre mise </a>
+    </br>
+    <a>Votre solde est maintenant de : {{ credit }} </a>
+    </br>
+    
+     
+    </br>
+    <a href="{{ path('index_user') }}">Retour à l'accueil</a>
+    </br>
+</div>
+{% endblock %}

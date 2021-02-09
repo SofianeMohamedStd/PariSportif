@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}competition{% endblock %}
+
+{% block body %}
+    {% include "commonPart/header.html.twig" %}
+    {% include"commonPart/menu.html.twig" %}
+    <section class="container-fluid" id="page-content">
+        <div class="row">
+            {# ASIDE LEFT #}
+            {% include"commonPart/competitionMenu.html.twig" %}
+            {% include"commonPart/listBet.html.twig" %}
+            <div class="col-sm-12 col-md-3">
+                <aside class="container-fluid aside-right">
+                    <div class="row card mt-4 p-2">
+                        <section class="col-sm-12 bet-ticket">
+                            {% if users.betUsers is not empty%}
+                                <div class="row">
+                                    {% for bUser in users.betUsers%}
+                                        <div class="col-10">
+                                            <p>{{ bUser.bet.evenement.name }}</p>
+                                            <p>{{ bUser.bet.evenement.equipe[0].name }} VS {{ bUser.bet.evenement.equipe[1].name }}</p>
+                                            <p>Cote : {{ bUser.bet.cote }}</p>
+                                            <form class="ui form" action="message" method="get">
+
+                                                <div class="field">
+                                                    <label>Sum:</label>
+                                                    <label>
+                                                        <input type="number" name="sum">
+                                                    </label>
+                                                </div>
+
+                                                <div class="field">
+                                                    <input type="hidden" name="message" value="{{ bUser.id }}">
+                                                </div>
+
+                                                <button class="ui button" type="submit">Send</button>
+
+                                            </form>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <p>Vous etes rattaché à aucun pari.</p>
+                            {% endif %}
+
+                        </section>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </section>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+<div class="col-sm-12 col-md-6">
+    <section class="central">
+        <div class="container-fluid p-0">
+            <div class="row mt-4">
+                <div class="col-sm-12 mt-4 bet-board card p-2">
+                    <h4>All Sports</h4>
+                    <table class="table table-hover fw-bold">
+                        <thead>
+                        <tr>
+                            <th scope="col" colspan="2">Match</th>
+                            <th class="text-center" scope="col"></th>
+                            <th class="text-center" scope="col"></th>
+                            <th class="text-center" scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ListEvenement in ListEvenements %}
+                            <tr>
+                                <td class="" colspan="2">
+                                    <p>{{ ListEvenement.equipe[0].name }}<br>
+                                        {{ ListEvenement.equipe[1].name }}<br>
+                                        {{ ListEvenement.competionn.name }}<br>
+                                    </p>
+                                </td>
+
+                                <td class="text-center">
+                                    <p>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ ListEvenement.id }}" aria-expanded="false" aria-controls="collapseExample{{ ListEvenement.id }}">
+                                            choice bet
+                                        </button>
+                                    </p>
+                                    <div class="collapse" id="collapseExample{{ ListEvenement.id }}">
+                                        {% for listBet in listBets%}
+                                            {% if listBet.evenement.id == ListEvenement.id %}
+
+                                                <div class="card card-body">
+                                                    <a type="button" class="btn btn-danger btn-sm" href="/indexuser/choice/bet/{{ listBet.id }}">{{ listBet.nameBet }} {{ listBet.cote }}</a>
+                                                </div>
+
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

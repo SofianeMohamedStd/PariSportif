@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BetModifierController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Modification du pari</h1>
+    
+    {% if targetBet is not empty %}
+    <a>ID pari : {{ targetBet.id }}</a>
+    </br>
+    <a>Pari en cours : {{ targetBet.bet.nameBet }}, pour l'évènement : {{ targetBet.bet.evenement.name }} </a>
+    </br>
+    <a>Le nouveau montant de votre pari est : {{ nouveauMontant }}</a>
+    </br>
+    <a>Montant parié : {{ targetBet.amountbet }}, gain possible : {{ targetBet.gainpossible }} </a>
+    </br>
+    </br> 
+    </br>
+    </br>
+    <a href="{{ path('bet_list') }}">Retour aux paris</a>
+    </br>
+    <a href="{{ path('index_user') }}">Retour à l'accueil</a>
+    </br>
+    {% endif %}
+   
+</div>
+{% endblock %}

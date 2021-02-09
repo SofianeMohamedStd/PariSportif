@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Launch a new user{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code {background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    {% include "commonPart/header.html.twig" %}
+<div class="content-body">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-md-6 contents">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="form-block">
+                            <div class="mb-4 mt-xl-5">
+                                <h3>Become member in to <strong>Pari Sportif</strong></h3>
+                            </div>
+                            <div class="example-wrapper">
+                                {{ form_start(form, { attr: {novalidate: 'novalidate'} }) }}
+                                {{ form_widget(form) }}
+
+                                <button id="submit" type="submit" class="btn btn-primary">submit</button>
+                                {{ form_end(form) }}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

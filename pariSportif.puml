@@ -1,0 +1,134 @@
+@startuml
+
+class Utilisateur {
+    - Id integer
+    - Nom string
+    - Prenom stringe
+    - Date de naissance date
+    - Adress string
+    - Pays string
+    - Ville string
+    - Telephone number
+    - Email string
+    - Mot_de_passe integer
+    - Solde float
+
+    + Inscription()
+    + Connexion()
+    + EnvoiDucument()
+}
+class StatutUtilisateur {
+    - id integer
+    - IdStatut StatutUtilisateur
+    - Document_Officelle Bloob
+    - Statut <0,1>
+
+    ValidationDocument()
+}
+
+class Transaction {
+    - id integer
+    - IdUtilisateur
+    - Dernnier_solde_mis integer
+    - Dernnier_solde_sorti integer
+
+    + AjouterArgent()
+    + RetiraitArgent()
+}
+
+class Pari {
+    - Id
+    - IdPronostic
+    - IdUtilisateur
+    - Date date
+    - mise float
+    - solde float
+
+    + AjouterPari()
+    + ModifierPari()
+    + SupprimerPari()
+}
+
+
+class Pronostic {
+    - Nom string
+    - Cote float
+
+    + AjouterPronstic()
+    + ModifierPronostic()
+    + SpprimerPronostic()
+    + ModifierCote()
+}
+
+class Epreuve {
+    - id integer
+    - Nom string
+    - Date date
+    - Lieu string
+    - idEvenement Evenement
+
+    + AjouterEpreuve()
+    + ModifierEpreuve()
+    + SpprimerEpreuve()
+    + ModifierDate()
+}
+
+class Evenement {
+    - id integer
+    - Nom string
+    - Date_Debut
+}
+
+class Sport {
+    - Nom string
+}
+class SportCollectif {
+    - Nombre_joueurs
+}
+class Equipe {
+    - id integer
+    - Nom Equipe
+
+    + AjouterEquipe()q
+    + ModifierEquipe()
+}
+class Joueurs {
+    - Nom string
+    - Prenom string
+    - Statut string
+
+    + AjouterJoueur()
+    + ModiferJoueur()
+    + SupprimerJoueur()
+    + ModifierStatut()
+}
+
+class SportIndivesuelle {
+    - Nom_joueur string
+    - Prenom_joueur string
+    - Statut string
+}
+class HistoriquePari {
+    - id integer
+    - IdUtilisateur integer
+    - Date date date
+    - mise float
+    - solde float
+
+    + AfficherHistorique()
+}
+
+
+(Utilisateur, Pronostic) . Pari
+Utilisateur "1" *-- "0..*" Transaction
+Utilisateur "1" *-- "1" StatutUtilisateur
+Pronostic "0..*" --* "1" Epreuve
+Epreuve "0..*" --* "1" Evenement
+Evenement "0..*" --* "1" Sport
+Pronostic "0..*" -- "1" Evenement
+Sport <|-- SportIndivesuelle
+Sport <|-- SportCollectif
+SportCollectif "1" -- "1..*" Equipe
+Equipe "1" -- "1..*" Joueurs
+Pari -- HistoriquePari
+@enduml
