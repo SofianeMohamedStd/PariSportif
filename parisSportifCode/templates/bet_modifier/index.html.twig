@@ -7,40 +7,66 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
+ {% include "commonPart/header.html.twig" %}
+    {% include "commonPart/menu.html.twig" %}
 
 <div class="example-wrapper">
-    <h1>Modification du pari</h1>
+<section class="container-fluid" id="page-content">
+        <div class="row">
+            {% include "commonPart/sportListLeft.html.twig" %}
+            <div class="col-sm-12 col-md-6">
+                <section class="central">
+                    <div class="container-fluid p-0">
+                        <div class="row mt-4">
+                            <div class="col-sm-12 mt-4 bet-board card p-2">
+                                <h3>Modification du pari</h3>
+                                <table class="table table-hover fw-bold">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" colspan="2">Pari en cours</th>
+                                         <tbody>
+                                    {% if targetBet is not empty %}
+                                        <tr>
+                                            <td class="" colspan="12">
+                                                <p>
+                                                    Évènement : {{ targetBet.bet.evenement.name }}<br>
+                                                    Pari en cours : {{ targetBet.bet.nameBet }}<br>
+                                                    Montant parié : {{ targetBet.amountbet }}, gain possible : {{ targetBet.gainpossible }}<br>
+                                                </p>
+                                                    <form class="ui form" action="modifiedamount{{ targetBet.id }}" method="get">
+                                                        <div class="field">
+                                                            <label>Montant :</label>
+                                                            <input type="number" name="montant">
+                                                        </div>
+
+                                                        <div class="field">
+                                                            <input type="hidden" name="modifiedamount" value="{{ targetBet.id }}">
+                                                        </div>
+                                                        </br>
+                                                        <button class="btn btn-success" type="submit">Modifier le montant</button>
+                                                        </br>
+                                                        </br>
+                                                        <button class="btn btn-danger"  href="betdeletionconfirmation{{ targetBet.id }}">Annuler le pari</button>
+                                                    </form>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                    </tbody>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
     
-    {% if targetBet is not empty %}
-    <a>ID pari : {{ targetBet.id }}</a>
-    </br>
-    <a>Pari en cours : {{ targetBet.bet.nameBet }}, pour l'évènement : {{ targetBet.bet.evenement.name }} </a>
-    </br>
-    <a>Montant parié : {{ targetBet.amountbet }}, gain possible : {{ targetBet.gainpossible }} </a>
-    </br>
-    </br> 
-        <form class="ui form" action="modifiedamount{{ targetBet.id }}" method="get">
+{% include "commonPart/returnToBetList.html.twig" %}   
+{% include "commonPart/returnToMain.html.twig" %}   
 
-            <div class="field">
-                <label>Montant :</label>
-                <input type="number" name="montant">
-            </div>
-
-            <div class="field">
-                <input type="hidden" name="modifiedamount" value="{{ targetBet.id }}">
-            </div>
-
-            <button class="ui button" type="submit">Modifier le montant</button>
-
-        </form>
-    </br> 
-    </br> 
-    <a href="betdeletionconfirmation{{targetBet.id}}">Annuler le pari</a>
-    </br>
-    </br>
-    <a href="{{ path('bet_list') }}">Retour aux paris</a>
-    </br>
-    {% endif %}
+</div>
    
 </div>
 {% endblock %}

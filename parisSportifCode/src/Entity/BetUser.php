@@ -82,7 +82,7 @@ class BetUser
 
     public function getGainPossible () : ?float
     {
-        return $this -> gainPossible;
+        return $this -> gainPossible/100;
     }
 
     public function setGainPossible ( ?float $amountBet, float $cote ) : self

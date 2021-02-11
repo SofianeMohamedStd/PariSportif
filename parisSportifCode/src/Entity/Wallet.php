@@ -31,27 +31,27 @@ class Wallet
         return $this->id;
     }
 
-    public function getCredit(): int
+    public function getCredit(): float
     {
-        return $this -> credit;
+        return $this -> credit/100;
     }
 
-    public function addToCredit(int $credit)
+    public function addToCredit(float $credit)
     {
         if($credit <= 0){
             return false;
         }
-        $this->credit += $credit;
+        $this->credit += ($credit*100);
 
         return true;
     }
 
-    public function removeFromCredit(int $credit)
+    public function removeFromCredit(float $credit)
     {
         if($credit <= 0 or $credit > $this->getCredit()){
             return false;
         }
-        $this->credit -= $credit;
+        $this->credit -= ($credit*100);
 
         return true;
     }

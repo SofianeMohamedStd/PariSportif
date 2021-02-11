@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\EquipeRepository;
-//use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,16 +51,14 @@ class Equipe
     private ?Sport $sport;
 
     /**
-     * @ORM\ManyToMany(targetEntity=EvenementSport::class, mappedBy="equipes")
-     * @var Collection<int, EvenementSport>|null
+     * @ORM\ManyToOne(targetEntity=EvenementSport::class, inversedBy="equipe")
      */
-    private ?Collection $evenementSports;
-
+    private $evenementSport;
 
     public function __construct()
     {
         $this->joueurs = new ArrayCollection();
-        $this->evenementSports = new ArrayCollection();
+
 
     }
 
@@ -145,32 +142,19 @@ class Equipe
         return $this;
     }
 
-    /**
-     * @return Collection|EvenementSport[]
-     */
-    public function getEvenementSports(): Collection
+    public function getEvenementSport(): ?EvenementSport
     {
-        return $this->evenementSports;
+        return $this->evenementSport;
     }
 
-    public function addEvenementSport(EvenementSport $evenementSport): self
+    public function setEvenementSport(?EvenementSport $evenementSport): self
     {
-        if (!$this->evenementSports->contains($evenementSport)) {
-            $this->evenementSports[] = $evenementSport;
-            $evenementSport->addEquipe($this);
-        }
+        $this->evenementSport = $evenementSport;
 
         return $this;
     }
 
-    public function removeEvenementSport(EvenementSport $evenementSport): self
-    {
-        if ($this->evenementSports->removeElement($evenementSport)) {
-            $evenementSport->removeEquipe($this);
-        }
 
-        return $this;
-    }
 
 
 }

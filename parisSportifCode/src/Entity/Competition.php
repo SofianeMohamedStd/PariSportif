@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\CompetitionRepository;
-use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -57,15 +56,17 @@ class Competition
      */
     private DateTimeInterface $endAt;
 
+
+
+    /**
+     * @ORM\OneToMany(targetEntity=EvenementSport::class, mappedBy="competionn")
+     */
+    private $evenement;
+
     /**
      * @ORM\ManyToOne(targetEntity=Sport::class, inversedBy="competition")
      */
-    private ?Sport $sport;
-
-    /**
-     * @ORM\OneToMany(targetEntity=EvenementSport::class, mappedBy="competionn", orphanRemoval=true)
-     */
-    private $evenement;
+    private $sport;
 
     public function __construct()
     {
@@ -119,18 +120,6 @@ class Competition
         return $this;
     }
 
-    public function getSport(): ?Sport
-    {
-        return $this->sport;
-    }
-
-    public function setSport(?Sport $sport): self
-    {
-        $this->sport = $sport;
-
-        return $this;
-    }
-
     /**
      * @return Collection|EvenementSport[]
      */
@@ -161,6 +150,15 @@ class Competition
         return $this;
     }
 
+    public function getSport(): ?Sport
+    {
+        return $this->sport;
+    }
 
+    public function setSport(?Sport $sport): self
+    {
+        $this->sport = $sport;
 
+        return $this;
+    }
 }

@@ -8,6 +8,9 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+  {% include "commonPart/header.html.twig" %}
+    {% include "commonPart/menu.html.twig" %}
+
 <div class="example-wrapper">
     <h1>Pari Supprimé</h1>
 
@@ -18,8 +21,7 @@
     </br>
     
      
-    </br>
-    <a href="{{ path('index_user') }}">Retour à l'accueil</a>
-    </br>
+{% include "commonPart/returnToBetList.html.twig" %}
+{% include "commonPart/returnToMain.html.twig" %}
 </div>
 {% endblock %}

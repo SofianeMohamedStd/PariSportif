@@ -49,22 +49,23 @@ class Sport
      */
     private ?int $nbPlayers;
 
-    /**
-     * @ORM\OneToMany(targetEntity=EvenementSport::class, mappedBy="competion")
-     * @var Collection<int, EvenementSport>|null
-     */
-    private ?Collection $competition;
+
 
     /**
      * @ORM\OneToMany(targetEntity=EvenementSport::class, mappedBy="sport")
-     * @var Collection<int, EvenementSport>|null
      */
-    private ?Collection $evenements;
+    private $evenement;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Competition::class, mappedBy="sport")
+     */
+    private $competition;
 
 
     public function __construct()
     {
-        $this->evenements = new ArrayCollection();
+        $this->evenement = new ArrayCollection();
+        $this->competition = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -117,13 +118,13 @@ class Sport
      */
     public function getEvenement(): Collection
     {
-        return $this->evenements;
+        return $this->evenement;
     }
 
     public function addEvenement(EvenementSport $evenement): self
     {
-        if (!$this->evenements->contains($evenement)) {
-            $this->evenements[] = $evenement;
+        if (!$this->evenement->contains($evenement)) {
+            $this->evenement[] = $evenement;
             $evenement->setSport($this);
         }
 
@@ -132,7 +133,7 @@ class Sport
 
     public function removeEvenement(EvenementSport $evenement): self
     {
-        if ($this->evenements->removeElement($evenement)) {
+        if ($this->evenement->removeElement($evenement)) {
             // set the owning side to null (unless already changed)
             if ($evenement->getSport() === $this) {
                 $evenement->setSport(null);
@@ -143,7 +144,7 @@ class Sport
     }
 
     /**
-     * @return Collection<int, Competition>|Competition[]
+     * @return Collection|Competition[]
      */
     public function getCompetition(): Collection
     {
@@ -171,4 +172,6 @@ class Sport
 
         return $this;
     }
+
+
 }

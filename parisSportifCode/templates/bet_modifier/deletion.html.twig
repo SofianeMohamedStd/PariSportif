@@ -8,15 +8,18 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+  {% include "commonPart/header.html.twig" %}
+    {% include "commonPart/menu.html.twig" %}
+
 <div class="example-wrapper">
     <h1>Supression du pari</h1>
 
     <a>Etes vous sûr de vouloir annuler votre pari ? </a>
     </br>
      
-    <a href="betdeleted{{targetBet.id}}">Oui, supprimer le pari</a>
+    <a type="button" class="btn btn-success btn-sm" href="betdeleted{{targetBet.id}}">Oui, supprimer le pari</a>
     </br>
-    <a href="{{ path('bet_list') }}">Non, retour aux paris</a>
+    <a type="button" class="btn btn-danger btn-sm"  href="{{ path('bet_list') }}">Non, retour aux paris.</a>
     </br>
 </div>
 {% endblock %}

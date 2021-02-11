@@ -48,26 +48,26 @@ class EvenementSport
 
 
     /**
-     * @ORM\ManyToOne(targetEntity=Sport::class, inversedBy="evenemetSports")
+     * @ORM\ManyToOne(targetEntity=Sport::class, inversedBy="evenement")
      */
-    private ?Sport $sport;
+    private $sport;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Equipe::class, inversedBy="evenementSport")
-     * @var Collection<int, Equipe>|null
+     * @ORM\OneToMany(targetEntity=Equipe::class, mappedBy="evenementSport")
      */
-    private ?Collection $equipes;
+    private $equipe;
 
     /**
      * @ORM\ManyToOne(targetEntity=Competition::class, inversedBy="evenement")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $competionn;
 
     public function __construct()
     {
-        $this->equipes = new ArrayCollection();
+        $this->equipe = new ArrayCollection();
     }
+
+
     public function __toString(): string
     {
         return $this->getName();
@@ -108,6 +108,8 @@ class EvenementSport
         return $this;
     }
 
+
+
     public function getSport(): ?Sport
     {
         return $this->sport;
@@ -125,13 +127,14 @@ class EvenementSport
      */
     public function getEquipe(): Collection
     {
-        return $this->equipes;
+        return $this->equipe;
     }
 
     public function addEquipe(Equipe $equipe): self
     {
-        if (!$this->equipes->contains($equipe)) {
-            $this->equipes[] = $equipe;
+        if (!$this->equipe->contains($equipe)) {
+            $this->equipe[] = $equipe;
+            $equipe->setEvenementSport($this);
         }
 
         return $this;
@@ -139,7 +142,12 @@ class EvenementSport
 
     public function removeEquipe(Equipe $equipe): self
     {
-        $this->equipes->removeElement($equipe);
+        if ($this->equipe->removeElement($equipe)) {
+            // set the owning side to null (unless already changed)
+            if ($equipe->getEvenementSport() === $this) {
+                $equipe->setEvenementSport(null);
+            }
+        }
 
         return $this;
     }
@@ -149,9 +157,9 @@ class EvenementSport
         return $this->competionn;
     }
 
-    public function setCompetionn(?Competition $competionn): self
+    public function setCompetionn(?Competition $competitionn): self
     {
-        $this->competionn = $competionn;
+        $this->competionn = $competitionn;
 
         return $this;
     }

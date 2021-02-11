@@ -7518,16 +7518,16 @@
         },
         {
             "name": "symfonycasts/verify-email-bundle",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/verify-email-bundle.git",
-                "reference": "56fc933ce984c005988a4a72e1aa00731e0884e0"
+                "reference": "9fc2cf3118e9f249c7bff11786fed4ea2c06e5ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/verify-email-bundle/zipball/56fc933ce984c005988a4a72e1aa00731e0884e0",
-                "reference": "56fc933ce984c005988a4a72e1aa00731e0884e0",
+                "url": "https://api.github.com/repos/SymfonyCasts/verify-email-bundle/zipball/9fc2cf3118e9f249c7bff11786fed4ea2c06e5ed",
+                "reference": "9fc2cf3118e9f249c7bff11786fed4ea2c06e5ed",
                 "shasum": ""
             },
             "require": {
@@ -7562,9 +7562,9 @@
             "description": "Simple, stylish Email Verification for Symfony",
             "support": {
                 "issues": "https://github.com/SymfonyCasts/verify-email-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/verify-email-bundle/tree/v1.1.1"
+                "source": "https://github.com/SymfonyCasts/verify-email-bundle/tree/v1.2.0"
             },
-            "time": "2020-12-18T14:57:31+00:00"
+            "time": "2021-02-08T14:20:22+00:00"
         },
         {
             "name": "twig/extra-bundle",
@@ -8319,16 +8319,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.73",
+            "version": "0.12.74",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "a08c2759d132b4247b32e03066401c3232ad99b7"
+                "reference": "bc5f9483c8f461c86653dcbd040cf0d2778c91a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a08c2759d132b4247b32e03066401c3232ad99b7",
-                "reference": "a08c2759d132b4247b32e03066401c3232ad99b7",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/bc5f9483c8f461c86653dcbd040cf0d2778c91a2",
+                "reference": "bc5f9483c8f461c86653dcbd040cf0d2778c91a2",
                 "shasum": ""
             },
             "require": {
@@ -8359,7 +8359,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.73"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.74"
             },
             "funding": [
                 {
@@ -8375,7 +8375,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-07T16:26:54+00:00"
+            "time": "2021-02-08T15:00:25+00:00"
         },
         {
             "name": "react/event-loop",
@@ -8881,16 +8881,16 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.29.0",
+            "version": "v1.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "9a9e3f4253ca0d923ad49b327db6f89a8f74fe4c"
+                "reference": "313b5669a5370bf36cd34fa8f5b5bbbfa5fb8aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/9a9e3f4253ca0d923ad49b327db6f89a8f74fe4c",
-                "reference": "9a9e3f4253ca0d923ad49b327db6f89a8f74fe4c",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/313b5669a5370bf36cd34fa8f5b5bbbfa5fb8aa8",
+                "reference": "313b5669a5370bf36cd34fa8f5b5bbbfa5fb8aa8",
                 "shasum": ""
             },
             "require": {
@@ -8949,7 +8949,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/maker-bundle/issues",
-                "source": "https://github.com/symfony/maker-bundle/tree/v1.29.0"
+                "source": "https://github.com/symfony/maker-bundle/tree/v1.29.1"
             },
             "funding": [
                 {
@@ -8965,7 +8965,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-07T01:02:28+00:00"
+            "time": "2021-02-10T19:21:31+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
